@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 import './App.scss';
 
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import WebDevelopment from './components/WebDevelopment';
 import SoftwareEngineering from './components/SoftwareEngineering';
@@ -12,25 +14,30 @@ import GraphicDesign from './components/GraphicDesign';
 const App: React.FC = () => {
     return (
         <Router>
-            <nav>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/web-development">Web Development</Link></li>
-                    <li><Link to="/software-engineering">Software Engineering</Link></li>
-                    <li><Link to="/art">Art</Link></li>
-                    <li><Link to="/graphic-design">Graphic Design</Link></li>
-                </ul>
-            </nav>
-
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/web-development" element={<WebDevelopment />} />
-                <Route path="/software-engineering" element={<SoftwareEngineering />} />
-                <Route path="/art" element={<Art />} />
-                <Route path="/graphic-design" element={<GraphicDesign />} />
-            </Routes>
+            <div className="App">
+                <Header />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/web-development" element={<WebDevelopment />} />
+                        <Route path="/software-engineering" element={<SoftwareEngineering />} />
+                        <Route path="/art" element={<Art />} />
+                        <Route path="/graphic-design" element={<GraphicDesign />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
         </Router>
     );
+};
+
+const appStyle: React.CSSProperties  = {
+    position: 'relative',
+    minHeight: '100vh',
+};
+
+const mainContentStyle: React.CSSProperties = {
+    paddingBottom: '2.5rem', // space for the footer
 };
 
 export default App;
